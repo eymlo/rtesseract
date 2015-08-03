@@ -14,7 +14,7 @@ module RMagickProcessor
   end
 
   def self.image_to_tif(source, x = nil, y = nil, w = nil, h = nil)
-    tmp_file = Tempfile.new(['', '.tif'])
+    tmp_file = Tempfile.new(['', '.png'])
     cat = source.is_a?(Pathname) ? read_with_processor(source.to_s) : source
     cat.crop!(x, y, w, h) unless [x, y, w, h].compact == []
     cat.alpha Magick::DeactivateAlphaChannel
